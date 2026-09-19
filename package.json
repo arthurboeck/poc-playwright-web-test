@@ -1,0 +1,25 @@
+{
+  "name": "grocerycrud-automation",
+  "version": "1.0.0",
+  "description": "Playwright E2E tests for Grocery CRUD demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:headed": "npx playwright test --headed",
+    "test:ui": "npx playwright test --ui",
+    "test:report": "npx playwright show-report",
+    "test:consulta": "npx playwright test tests/e2e/grocery-crud-consulta.spec.ts",
+    "test:add-customer": "npx playwright test tests/e2e/grocery-crud-add-customer.spec.ts",
+    "test:ci": "npx playwright test --reporter=line"
+  },
+  "keywords": ["playwright", "e2e", "testing", "grocerycrud"],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/node": "^26.6.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^7.0.2"
+  }
+}
