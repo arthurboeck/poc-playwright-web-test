@@ -1,7 +1,7 @@
 {
-  "name": "grocerycrud-automation",
+  "name": "grocerycrud-web-test",
   "version": "1.0.0",
-  "description": "Playwright E2E tests for Grocery CRUD demo",
+  "description": "Playwright E2E tests for Grocery CRUD Demo",
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
