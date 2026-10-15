@@ -39,7 +39,8 @@ export class GroceryCrudPage {
 
   async searchByName(query: string) {
     await this.nameSearchInput.fill(query);
-    await this.page.waitForTimeout(1000);
+    await this.nameSearchInput.press('Enter');
+    await this.table.waitFor({ state: 'visible', timeout: 10000 });
   }
 
   async search(query: string) {
@@ -47,8 +48,9 @@ export class GroceryCrudPage {
   }
 
   async clearSearch() {
-    await this.nameSearchInput.clear();
-    await this.page.waitForTimeout(1000);
+    await this.nameSearchInput.fill('');
+    await this.nameSearchInput.press('Enter');
+    await this.table.waitFor({ state: 'visible', timeout: 10000 });
   }
 
   async getRowCount(): Promise<number> {
@@ -85,6 +87,14 @@ export class GroceryCrudPage {
     await this.addButton.click();
     await this.page.waitForLoadState('domcontentloaded');
     await this.page.waitForURL('**/add*', { timeout: 15000 });
+  }
+
+  async clickEditButton() {
+    const editButtons = this.table.locator('a:has-text("Edit")').first();
+    await editButtons.waitFor({ state: 'visible', timeout: 10000 });
+    await editButtons.click();
+    await this.page.waitForLoadState('domcontentloaded');
+    await this.page.waitForURL('**/edit/**', { timeout: 15000 });
   }
 
   async selectRowsPerPage(count: number) {

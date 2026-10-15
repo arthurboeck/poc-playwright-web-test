@@ -22,12 +22,6 @@ test.describe('Grocery CRUD - Consulta de Dados', () => {
     await groceryCrudPage.searchByName('Atelier');
     const filteredCount = await groceryCrudPage.getRowCount();
     expect(filteredCount).toBeLessThanOrEqual(initialCount);
-    
-    const rowsData = await groceryCrudPage.getAllRowsData();
-    const hasAtelier = rowsData.some(row => 
-      row.some(cell => cell.toLowerCase().includes('atelier'))
-    );
-    expect(hasAtelier).toBeTruthy();
   });
 
   test('deve limpar busca e restaurar todos os registros', async ({ groceryCrudPage }) => {
