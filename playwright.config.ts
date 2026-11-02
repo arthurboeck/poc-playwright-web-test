@@ -24,6 +24,14 @@ export default defineConfig({
     },
   ],
   reporter: [
+    ['list'],
+    [
+      'html',
+      {
+        open: 'never',
+        outputFolder:'test-results'
+      },
+    ],
     [
       'playwright-smart-reporter',
       {
@@ -31,10 +39,7 @@ export default defineConfig({
         historyFile: 'test-history.json',
         maxHistoryRuns: 10,
         enableAIRecommendations: false,
-        enableCausalTimeline: true,
-        forecast: {
-          enable: true,
-        },
+        enableCausalTimeline: true
       },
     ],
   ],

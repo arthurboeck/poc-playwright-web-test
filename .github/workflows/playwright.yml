@@ -31,7 +31,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           cache: 'npm'
           cache-dependency-path: package-lock.json
 
@@ -41,16 +41,25 @@ jobs:
       - name: Run Playwright tests
         run: npm run test:ci
 
-      - name: Upload Playwright HTML Report
+      - name: Upload Smart Report HTML
         if: always()
         uses: actions/upload-artifact@v6
         with:
-          name: playwright-report-${{ github.run_number }}
-          path: playwright-report
+          name: smart-report-${{ github.run_number }}
+          path: tests/smart-report.html
           retention-days: 30
           overwrite: true
 
-      - name: Upload All Test Results
+      - name: Upload Test History
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: test-history-${{ github.run_number }}
+          path: tests/test-history.json
+          retention-days: 30
+          overwrite: true
+
+      - name: Upload Test Results
         if: always()
         uses: actions/upload-artifact@v6
         with:
