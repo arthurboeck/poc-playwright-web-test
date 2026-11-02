@@ -5,10 +5,7 @@ test.describe('Grocery CRUD - Edição de Customer', () => {
     await groceryCrudPage.goto();
   });
 
-  test('deve editar um customer existente com dados válidos', async ({
-    groceryCrudPage,
-    customerFormPage
-  }) => {
+  test('deve editar um customer existente com dados válidos', async ({ groceryCrudPage, customerFormPage }) => {
     await groceryCrudPage.clickEditButton();
     await customerFormPage.waitForFormLoad();
 
@@ -23,7 +20,7 @@ test.describe('Grocery CRUD - Edição de Customer', () => {
       postalCode: '20000-000',
       country: 'Brazil',
       salesRepEmployeeNumber: '1102',
-      creditLimit: '75000.00'
+      creditLimit: '75000.00',
     };
 
     await customerFormPage.fillRequiredFields(updatedData);

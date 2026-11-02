@@ -27,10 +27,10 @@ test.describe('Grocery CRUD - Consulta de Dados', () => {
   test('deve limpar busca e restaurar todos os registros', async ({ groceryCrudPage }) => {
     await groceryCrudPage.searchByName('Atelier');
     const filteredCount = await groceryCrudPage.getRowCount();
-    
+
     await groceryCrudPage.clearSearch();
     const allCount = await groceryCrudPage.getRowCount();
-    
+
     expect(allCount).toBeGreaterThanOrEqual(filteredCount);
   });
 
@@ -40,7 +40,7 @@ test.describe('Grocery CRUD - Consulta de Dados', () => {
       const firstPageRows = await groceryCrudPage.getAllRowsData();
       await groceryCrudPage.goToPage(parseInt(pageNumbers[1]));
       const secondPageRows = await groceryCrudPage.getAllRowsData();
-      
+
       expect(secondPageRows.length).toBeGreaterThan(0);
       expect(secondPageRows).not.toEqual(firstPageRows);
     }
@@ -52,7 +52,7 @@ test.describe('Grocery CRUD - Consulta de Dados', () => {
       const initialCount = await groceryCrudPage.getRowCount();
       await groceryCrudPage.selectRowsPerPage(25);
       const newCount = await groceryCrudPage.getRowCount();
-      
+
       expect(newCount).toBeLessThanOrEqual(25);
     }
   });
@@ -60,7 +60,7 @@ test.describe('Grocery CRUD - Consulta de Dados', () => {
   test('deve validar estrutura de dados das linhas', async ({ groceryCrudPage }) => {
     const rowsData = await groceryCrudPage.getAllRowsData();
     expect(rowsData.length).toBeGreaterThan(0);
-    
+
     for (const row of rowsData) {
       expect(row.length).toBeGreaterThan(0);
       const hasNonEmptyCell = row.some(cell => cell.trim().length > 0);

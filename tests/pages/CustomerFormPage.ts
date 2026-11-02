@@ -133,11 +133,11 @@ export class CustomerFormPage {
     await this.fillState(data.state);
     await this.fillPostalCode(data.postalCode);
     await this.fillCountry(data.country);
-    
+
     if (data.salesRepEmployeeNumber) {
       await this.selectSalesRepEmployeeNumber(data.salesRepEmployeeNumber);
     }
-    
+
     if (data.creditLimit) {
       await this.fillCreditLimit(data.creditLimit);
     }
@@ -152,9 +152,9 @@ export class CustomerFormPage {
     await this.saveAndGoBackButton.click();
     await this.page.waitForLoadState('domcontentloaded');
     // Aguarda navegar para success/... ou voltar para bootstrap_theme_v4 (lista)
-    await this.page.waitForURL('**/success/**', { timeout: 15000 }).catch(() => 
-      this.page.waitForURL('**/bootstrap_theme_v4**', { timeout: 5000 })
-    );
+    await this.page
+      .waitForURL('**/success/**', { timeout: 15000 })
+      .catch(() => this.page.waitForURL('**/bootstrap_theme_v4**', { timeout: 5000 }));
   }
 
   async clickCancel(): Promise<void> {

@@ -5,13 +5,10 @@ test.describe('Grocery CRUD - Inclusão de Customer', () => {
     await groceryCrudPage.goto();
   });
 
-  test('deve incluir novo customer com dados válidos', async ({ 
-    groceryCrudPage, 
-    customerFormPage 
-  }) => {
+  test('deve incluir novo customer com dados válidos', async ({ groceryCrudPage, customerFormPage }) => {
     await groceryCrudPage.clickAddButton();
     await customerFormPage.waitForFormLoad();
-    
+
     const customerData = {
       customerName: 'Test Customer Automation',
       contactLastName: 'Silva',
@@ -24,22 +21,19 @@ test.describe('Grocery CRUD - Inclusão de Customer', () => {
       postalCode: '01234-567',
       country: 'Brazil',
       salesRepEmployeeNumber: '1102',
-      creditLimit: '50000.00'
+      creditLimit: '50000.00',
     };
-    
+
     await customerFormPage.fillRequiredFields(customerData);
     await customerFormPage.clickSaveAndGoBack();
-    
+
     await expect(groceryCrudPage.page).toHaveURL(/success/);
   });
 
-  test('deve cancelar inclusão e voltar para lista', async ({
-    groceryCrudPage,
-    customerFormPage
-  }) => {
+  test('deve cancelar inclusão e voltar para lista', async ({ groceryCrudPage, customerFormPage }) => {
     await groceryCrudPage.clickAddButton();
     await customerFormPage.waitForFormLoad();
-    
+
     await customerFormPage.fillCustomerName('Test Cancel');
     await customerFormPage.fillContactLastName('Cancel');
     await customerFormPage.fillContactFirstName('Test');
@@ -49,20 +43,17 @@ test.describe('Grocery CRUD - Inclusão de Customer', () => {
     await customerFormPage.fillState('SP');
     await customerFormPage.fillPostalCode('01234-567');
     await customerFormPage.fillCountry('Brazil');
-    
+
     await customerFormPage.clickCancel();
-    
+
     await expect(groceryCrudPage.page).toHaveURL(/bootstrap_theme_v4/);
     await groceryCrudPage.table.waitFor({ state: 'visible' });
   });
 
-  test('deve incluir customer com campos obrigatórios do backend', async ({
-    groceryCrudPage,
-    customerFormPage
-  }) => {
+  test('deve incluir customer com campos obrigatórios do backend', async ({ groceryCrudPage, customerFormPage }) => {
     await groceryCrudPage.clickAddButton();
     await customerFormPage.waitForFormLoad();
-    
+
     // O backend exige todos estes campos (incluindo dropdown Chosen e creditLimit)
     const requiredData = {
       customerName: 'Backend Required Customer',
@@ -75,12 +66,12 @@ test.describe('Grocery CRUD - Inclusão de Customer', () => {
       postalCode: '30000-000',
       country: 'Brazil',
       salesRepEmployeeNumber: '1102',
-      creditLimit: '10000.00'
+      creditLimit: '10000.00',
     };
-    
+
     await customerFormPage.fillRequiredFields(requiredData);
     await customerFormPage.clickSaveAndGoBack();
-    
+
     await expect(groceryCrudPage.page).toHaveURL(/success/);
   });
 });
