@@ -4,6 +4,8 @@
   "description": "Playwright E2E tests for Grocery CRUD Demo",
   "main": "index.js",
   "scripts": {
+    "build:prettier:check": "npx prettier . --check",
+    "build:prettier:format": "npx prettier . --write",
     "test": "npx playwright test",
     "test:headed": "npx playwright test --headed",
     "test:ui": "npx playwright test --ui",
@@ -12,13 +14,20 @@
     "test:add-customer": "npx playwright test tests/e2e/grocery-crud-add-customer.spec.ts",
     "test:ci": "npx playwright test --reporter=line"
   },
-  "keywords": ["playwright", "e2e", "testing", "grocerycrud"],
+  "keywords": [
+    "playwright",
+    "e2e",
+    "testing",
+    "grocerycrud"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
     "@playwright/test": "^1.63.0",
     "@types/node": "^26.6.2",
+    "playwright-smart-reporter": "^1.0.1",
+    "prettier": "3.9.10",
     "ts-node": "^10.9.2",
     "typescript": "^7.0.2"
   }
