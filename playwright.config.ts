@@ -23,4 +23,14 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
   ],
+  reporter: [
+    [
+      'playwright-smart-reporter',
+      {
+        outputFile: 'smart-report.html',
+        historyFile: 'test-history.json',
+        maxHistoryRuns: 10,
+      },
+    ],
+  ],
 });
