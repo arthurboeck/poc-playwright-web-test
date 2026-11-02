@@ -11,8 +11,7 @@
     "test:ui": "npx playwright test --ui",
     "test:report": "npx playwright show-report",
     "test:consulta": "npx playwright test tests/e2e/grocery-crud-consulta.spec.ts",
-    "test:add-customer": "npx playwright test tests/e2e/grocery-crud-add-customer.spec.ts",
-    "test:ci": "npx playwright test --reporter=line"
+    "test:add-customer": "npx playwright test tests/e2e/grocery-crud-add-customer.spec.ts"
   },
   "keywords": [
     "playwright",
