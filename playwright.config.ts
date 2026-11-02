@@ -30,6 +30,11 @@ export default defineConfig({
         outputFile: 'smart-report.html',
         historyFile: 'test-history.json',
         maxHistoryRuns: 10,
+        enableAIRecommendations: false,
+        enableCausalTimeline: true,
+        forecast: {
+          enable: true,
+        },
       },
     ],
   ],
